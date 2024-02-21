@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Items for Sale
+{% endblock %}
+
+{% block main %}
+<body class="bg-info text-white" style="background-color: blue; color: white;"></body>
+    <form action="/sell" method="post">
+        <div class="mb-3" style="color: blue">
+            <!-- <select class="form-select mx-auto w-auto" name="" fdprocessedid="66ndut"> -->
+            <label for="item_name">Item Name:</label>
+            <input type="text" name="item_name" required><br>
+            <label for="item_class">Item Class:</label>
+            <select name="item_class" required>
+            <option value="furniture">Tickets</option>
+            <option value="furniture">Furniture</option>
+            <option value="kitchenware">Kitchenware</option>
+            <option value="electronics">Electronics</option>
+            <option value="miscellaneous">Miscellaneous</option>
+            </select><br>
+
+            <label for="item_description">Item Description:</label>
+            <textarea name="item_description" required></textarea><br>
+
+            <label for="item_price">Item Price:</label>
+            <input type="number" name="item_price" required><br>
+
+            <label for="duration">Duration:</label>
+            <input type="number" name="duration" required><br>
+
+            <input class="btn btn-primary" type="submit" value="Submit">
+            </select>
+        </div>
+
+    </form>
+</body>
+{% endblock %}

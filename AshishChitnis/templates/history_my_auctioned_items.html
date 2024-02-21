@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Bids on my auctioned items
+{% endblock %}
+
+{% block main %}
+
+<!-- Check if a message exists and display an alert banner if it does -->
+{% if message %}
+<div class="alert alert-success">
+    {{ message }}
+</div>
+{% endif %}
+
+<body>
+    <h1>Bid history of my items on sale</h1>
+    <table border="1">
+    <table class="table table-striped">
+        <tr>
+            <th>Item ID</th>
+            <th>Title</th>
+            <th>Class</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Bid Price</th>
+            <th>Bid Ends At</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item['item_id'] }}</td>
+            <td>{{ item['item_name'] }}</td>
+            <td>{{ item['class'] }}</td>
+            <td>{{ item['desc'] }}</td>
+            <td>{{ item['status'] }}</td>
+            <td>${{ item['current_bid_price'] }}</td>
+            <td>{{ item['end_time'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock %}

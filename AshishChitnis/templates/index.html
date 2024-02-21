@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Items for Sale
+{% endblock %}
+
+{% block main %}
+
+<!-- Check if a message exists and display an alert banner if it does -->
+{% if message %}
+<div class="alert alert-success">
+    {{ message }}
+</div>
+{% endif %}
+
+<body class="bg-info text-white">
+    <h1>Items on Auction - Make A Bid</h1>
+    <table border="1">
+    <table class="table table-striped">
+        <tr>
+            <th>Item ID</th>
+            <th>Title</th>
+            <th>Class</th>
+            <th>Description</th>
+            <!-- <th>Status</th> -->
+            <th>Latest Bid Price</th>
+            <th>Bid Ends At</th>
+            <th>Place Bid</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item['item_id'] }}</td>
+            <td>{{ item['item_name'] }}</td>
+            <td>{{ item['class'] }}</td>
+            <td>{{ item['desc'] }}</td>
+            <!-- <td>{{ item['status'] }}</td> -->
+            <td>${{ item['last_price'] }}</td>
+            <td>{{ item['end_time'] }}</td>
+            <td>
+                {% if item['status'] == 'active' and user_id != item['seller_id']  %}
+                <form action="/bid/{{ item['item_id'] }}" method="post">
+                    <input type="number" step="0.01" name="bid_amount" placeholder="$ Enter Bid">
+                    <button type="submit">Submit Bid</button>
+                </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock %}

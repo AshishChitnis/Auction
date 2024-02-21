@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Items for Sale
+{% endblock %}
+
+{% block main %}
+<!-- Check if a message exists and display an alert banner if it does -->
+{% if message %}
+<div class="alert alert-success">
+    {{ message }}
+</div>
+{% endif %}
+
+<body>
+    <h1>My Cash</h1>
+    <table border="1">
+    <table class="table table-striped">
+        <tr>
+            <th>Cash available for auction</th>
+            <th>Cash held for my current bids</th>
+
+        <!-- </tr>
+        {% for item in items %} -->
+        <tr>
+            <td>${{ items[0]['cash'] }}</td>
+            <td>${{ items[0]['cash_hold_for_bid'] }}</td>
+        </tr>
+        <!-- {% endfor %} -->
+    </table>
+</body>
+{% endblock %}
